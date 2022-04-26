@@ -62,6 +62,10 @@ function getInfo(){
   document.getElementById("id16").onclick = function(){
     cambiar_gomaa();
   }
+  
+  document.getElementById("boton").onclick = function(){
+    downloadCanvasAsImage();
+  }
 }
 
 function cambiar_gomaa(){
@@ -125,6 +129,14 @@ const mouseMoving = (evt) => {
 const mouseUp = () => {
   mainCanvas.removeEventListener("mousemove", mouseMoving);
 };
+
+function downloadCanvasAsImage(){
+  var can = document.getElementById("main-canvas");
+  var ctx = can.getContext("2d")
+  var imagen = can.toDataURL("image/png").replace("image/png", "image/octet-stream");
+  window.location.href = imagen;
+
+}    
 
 mainCanvas.addEventListener("mousedown", mouseDown);
 mainCanvas.addEventListener("mouseup", mouseUp);
