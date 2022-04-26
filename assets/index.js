@@ -137,11 +137,15 @@ const mouseUp = () => {
 
 function downloadCanvasAsImage(){
   var can = document.getElementById("main-canvas");
-  var ctx = can.getContext("2d")
-  var imagen = can.toDataURL("image/png").replace("image/png", "image/octet-stream");
-  window.location.href = imagen;
-
-}    
+  var ctx = can.getContext("2d");
+  var imagen = can.toDataURL();
+  var link = document.createElement("a");
+  link.href = imagen;
+  link.download = "saveimgcanvas";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}       
 
 mainCanvas.addEventListener("mousedown", mouseDown);
 mainCanvas.addEventListener("mouseup", mouseUp);
