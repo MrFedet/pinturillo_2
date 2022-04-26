@@ -1,6 +1,7 @@
-//Guardar el elemento y el contexto
 const mainCanvas = document.getElementById("main-canvas");
 const context = mainCanvas.getContext("2d");
+const $canvas = document.querySelector("#main-canvas"),
+$btnDescargar = document.querySelector("#btnDescargar");
 const goma = document.querySelector("id16");
 cont = 0
 
@@ -57,12 +58,15 @@ function getInfo(){
   }else if (document.getElementById("id15").checked == true){
     color ="#FB7E00"
     cont = 0
+  }else if (document.getElementById("marron").checked == true){
+    color = "#804000"
+    cont = 0
   }
 
   document.getElementById("id16").onclick = function(){
     cambiar_gomaa();
   }
-  
+
   document.getElementById("boton").onclick = function(){
     downloadCanvasAsImage();
   }
@@ -78,8 +82,6 @@ function cambiar_gomaa(){
    document.getElementById("id1").checked = true
   }
 }
-
-
 
 function cambiar_goma(){
   color = "#fff";
@@ -99,6 +101,7 @@ function cambiar_goma(){
   document.getElementById("id3").checked= false
   document.getElementById("id2").checked = false
   document.getElementById("id1").checked= false
+  document.getElementById("marron").checked= false
 }
 const dibujar = (cursorX, cursorY) => {
   getInfo()
@@ -129,6 +132,8 @@ const mouseMoving = (evt) => {
 const mouseUp = () => {
   mainCanvas.removeEventListener("mousemove", mouseMoving);
 };
+
+
 
 function downloadCanvasAsImage(){
   var can = document.getElementById("main-canvas");
